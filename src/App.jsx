@@ -318,7 +318,7 @@ function App() {
                         placeholder="請輸入圖片連結"
                       />
                     </div>
-                    <img className="img-fluid" src={tempProduct.imageUrl} alt={tempProduct.title} />
+                    <img className="img-fluid" src={tempProduct.imageUrl} alt='主圖' />
                   </div>
                   {/* 多圖區塊：動態渲染 */}
                   <div className="mt-3">
