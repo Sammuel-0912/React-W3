@@ -191,7 +191,24 @@ function App() {
       alert("登入失敗: " + error.response.data.message);
     }
   };
-  
+  const handleFileChange = async (e) => {
+    const url = `${API_BASE}/api/${API_PATH}/admin/upload`;
+    const file = e.target.files?.[0]; //避免找不到檔案時的報錯
+    if (!file) return; 
+    try {
+      const formData = new FormData(); 
+      formData.append("file-to-upload",file);
+
+      let response = await axios.post(url,formData);
+      const uploadImageUrl = response.data.imageUrl; 
+      setTempProduct((prevTemData) => ({
+        ...prevTemData,
+        imageUrl: uploadImageUrl,
+      }));
+    } catch (error) {
+      console.error("圖片上傳失敗",error);
+    }
+  }
 
   return (
     <>
@@ -296,6 +313,7 @@ function App() {
         handleRemoveImage = {handleRemoveImage}
         closeModal = {closeModal}
         updateProduct = {updateProduct}
+        handleFileChange={handleFileChange}
       >
       </ProductModal>
     </>

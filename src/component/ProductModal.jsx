@@ -6,6 +6,7 @@ function ProductModal({
     handleRemoveImage,
     closeModal,
     updateProduct,
+    handleFileChange,
 }) {
     return (
         <div
@@ -32,6 +33,18 @@ function ProductModal({
                         <div className="row">
                             <div className="col-sm-4">
                                 <div className="mb-2">
+                                    <div className="mb-3">
+                                        <label htmlFor="fileInput" className="form-label">
+                                            圖片上傳
+                                        </label>
+                                        <input type="file" 
+                                        accept=".jpg,.jpeg,.png"
+                                        className="form-control"
+                                        id="fileInput"
+                                        onChange={handleFileChange}
+                                        />
+                                    </div>
+                                    <p className="my-2">or</p>
                                     <div className="mb-3">
                                         <label htmlFor="imageUrl" className="form-label">
                                             輸入圖片網址
